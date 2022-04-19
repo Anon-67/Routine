@@ -7,22 +7,22 @@ function NewsPage() {
     const [articles, setArticles] = useState([])
     // const [feed, setFeed] = useState([])
 
-    useEffect(() => {
-        fetch("https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=0b56cebed0664261aea020a97a1c704a")
-            .then(r => r.json())
-            .then(r => setArticles(r.articles))
-    }, [])
+    // useEffect(() => {
+    //     fetch("https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=0b56cebed0664261aea020a97a1c704a")
+    //         .then(r => r.json())
+    //         .then(r => setArticles(r.articles))
+    // }, [])
 
 
-    const articleMap = articles.map((a, index) => {
-        if (a.content && a.urlToImage) {
-            return (
-                <NewsCard key={index} article={a} />
-            )
-        } else {
-            return null
-        }
-    })
+    // const articleMap = articles.map((a, index) => {
+    //     if (a.content && a.urlToImage) {
+    //         return (
+    //             <NewsCard key={index} article={a} />
+    //         )
+    //     } else {
+    //         return null
+    //     }
+    // })
 
 
     // useEffect(() => {
@@ -43,7 +43,7 @@ function NewsPage() {
 
     return (
         <div className="card-container">
-            {articleMap}
+            This isnt free
         </div>
 
     )
