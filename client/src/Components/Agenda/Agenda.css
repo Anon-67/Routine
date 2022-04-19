@@ -1,0 +1,23 @@
+.event-container{
+	box-shadow: 0 15px 30px 1px grey;
+	background: rgba(255, 255, 255, 0.90);
+	text-align: left;
+	padding: 3px;
+	border-radius: 5px;
+	margin-top: 0em;
+    margin-right: auto ;
+    margin-bottom: 1em;
+    margin-left: auto;
+	max-height: 50px;
+	max-width: 500px;
+    color: black;
+	
+}
+
+.new-event-form{
+    padding-top: 100px;
+}
+
+.events-container{
+    padding-top: 50px;
+}
