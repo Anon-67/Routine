@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import MessageCard from "./MessageCard";
 import "./Messages.css"
 
@@ -6,6 +6,13 @@ function Messages({ user, conversation }) {
     const [messages, setMessages] = useState([])
     const [message, setMessage] = useState("")
     const [refresh, setRefresh] = useState(true)
+    const messagesEndRef = useRef(null);
+
+    const scrollToBottom = () => {
+      messagesEndRef.current.scrollIntoView({ behavior: "auto" });
+    };
+    
+    useEffect(scrollToBottom, [messages]);
 
 
 
@@ -44,9 +51,10 @@ function Messages({ user, conversation }) {
 
 
     return (
-        <div className="fuck-this-and-your-mother">
+        <div className="fuck-this">
             <div className="chatbox">
                     {messageMap}
+                    <div ref={messagesEndRef} />
             </div>
             <div>
                 <form className="chat-type" onSubmit={handleSubmit}>

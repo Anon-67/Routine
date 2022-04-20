@@ -1,19 +1,20 @@
 import React from "react";
 import "./Agenda.css"
+import moment from "moment";
 
 
 function EventCard({ event, today }) {
 
+    function convert(input) {
+        return moment(input, 'CCYY-MM-DDThh:mm:ss[.sss]TZD').format('MMMM D h:mm A');
+    }
+
     return (
         <>
-            {(event.start.slice(0, 9) === today.slice(0,9)) ? (
                 <div className="event-container">
                     <div>{event.body}</div>
-                    <div>{event.start} - {event.end}</div>
+                    <div>{convert(event.start)} - {convert(event.end_time)}</div>
                 </div>
-            ) : (
-                null
-            )}
         </>
     )
     

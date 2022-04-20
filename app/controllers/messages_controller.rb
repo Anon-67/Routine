@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
         render json: message, status: :created
     end
 
-    def tester
+    def show
         recieved = Message.all.where(sent_to: session[:user_id]).where(user_id: params[:id])
         sent = Message.all.where(user_id: session[:user_id]).where(sent_to: params[:id])
         messages = sent + recieved

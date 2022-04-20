@@ -8,42 +8,23 @@ function NewsPage() {
     // const [feed, setFeed] = useState([])
 
     // useEffect(() => {
-    //     fetch("https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=0b56cebed0664261aea020a97a1c704a")
+    //     fetch("https://newsdata.io/api/1/news?apikey=pub_665612df13c9d045d5d229d0edbe057cf68b&q=business&country=us&language=en&category=business,science,technology,top,world")
     //         .then(r => r.json())
-    //         .then(r => setArticles(r.articles))
+    //         .then(r => setArticles(r.results))
     // }, [])
 
 
-    // const articleMap = articles.map((a, index) => {
-    //     if (a.content && a.urlToImage) {
+    // const articleMap = articles.map((a, index) => { 
     //         return (
     //             <NewsCard key={index} article={a} />
     //         )
-    //     } else {
-    //         return null
-    //     }
     // })
-
-
-    // useEffect(() => {
-    // fetch("https://getpocket.com/users/BigDog0321/feed/all", {
-    //     type: "GET",
-    //     headers: {
-    //         username: "BigDog0321",
-    //         password: "Spring2011"
-    //     }
-    // })
-    //     .then(r => r.json())
-    //     .then(r => console.log(r))
-    // }, [])
-
-
 
 
 
     return (
         <div className="card-container">
-            This isnt free
+            {/* {articleMap} */}
         </div>
 
     )

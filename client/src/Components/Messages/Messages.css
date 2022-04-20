@@ -1,4 +1,4 @@
-.fuck-this-and-your-mother{
+.fuck-this{
 	padding-top: 100px;
 }
 
@@ -13,6 +13,24 @@
     margin-bottom: 10px;
     margin-left: auto;
 	height: 50px;
+	max-width: 200px;
+    color: black;
+	list-style: none;
+  
+	
+}
+
+.user-card{
+	box-shadow: 0 15px 30px 1px grey;
+	background: rgba(255, 255, 255, 0.90);
+	text-align: left;
+	padding: 3px;
+	border-radius: 5px;
+	margin-top: 10px;
+    margin-right: auto ;
+    margin-bottom: 10px;
+    margin-left: auto;
+	height: 20px;
 	max-width: 200px;
     color: black;
 	list-style: none;

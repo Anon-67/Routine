@@ -1,5 +1,5 @@
-class AddStartTimeAndEndTimeToEvents < ActiveRecord::Migration[6.1]
-  def change
+class AddStartAndEndToEventsAgain < ActiveRecord::Migration[6.1]
+  def change 
     add_column :events, :start, :datetime
     add_column :events, :end, :datetime
   end

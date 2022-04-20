@@ -29,9 +29,9 @@ function NavBar({ user, setUser, setConversation }) {
             <nav className='navbar'>
                 <Link className="nav-link" to="/">Home</Link>
                 <Link className="nav-link" to="/agenda">Agenda</Link>
+                <Link className="nav-link" to="/tasks">Today's Tasks</Link>
                 <Link className="nav-link" to="/messages" onClick={HandleClick()}>Messages</Link>
                 <Link className="nav-link" to="/catchup">Catch Up</Link>
-                <Link className="nav-link" to="/tasks">Tasks</Link>
                 <Link to="/" className="logout" onClick={handleLogoutClick}>Logout</Link>
             </nav>
             ) : (

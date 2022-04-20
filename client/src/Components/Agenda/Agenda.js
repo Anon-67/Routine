@@ -5,21 +5,16 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { TextField } from '@mui/material'
 import "./Agenda.css"
-import moment from "moment"
 
-
-function Agenda({ user }) {
+function Agenda() {
     const [events, setEvents] = useState([])
     const [event, setEvent] = useState("")
-    const [startTime, setStartTime] = useState("")
-    const [endTime, setEndTime] = useState("")
+    const [startTime, setStartTime] = useState({})
+    const [endTime, setEndTime] = useState({})
     const [refresh, setRefresh] = useState(true)
     const current = new Date();
     const today = `${current.getFullYear()}-${current.getMonth()}-${current.getDate()}`
 
-    function convert(input) {
-        return moment(input, 'HH:mm').format('h:mm A');
-    }
 
     useEffect(() => {
         fetch("/events")
@@ -30,11 +25,8 @@ function Agenda({ user }) {
 
 
     const eventsMap = events.map((event, index) => {
-        if (event.user.id === user.id) {
+        console.log(event)
             return <EventCard key={index} event={event} today={today} />
-        } else {
-            return null
-        }
     })
 
     function handleSubmit(e) {
@@ -43,9 +35,10 @@ function Agenda({ user }) {
 
         const eventToCreate = {
             body: event,
-            start: `${startTime.getFullYear()}-${startTime.getMonth()}-${startTime.getDate()} ${convert(`${startTime.getDate()} ${startTime.getHours()}:${startTime.getMinutes()}`)}`,
-            end: `${endTime.getFullYear()}-${endTime.getMonth()}-${endTime.getDate()} ${convert(`${endTime.getDate()} ${endTime.getHours()}:${endTime.getMinutes()}`)}`
+            start: startTime,
+            end_time: endTime
         }
+
 
         fetch("/events", {
             method: "POST",
@@ -80,7 +73,7 @@ function Agenda({ user }) {
                     />
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DateTimePicker
-                            label="Start Date"
+                            label="Start"
                             value={startTime}
                             onChange={(newValue) => {
                                 setStartTime(newValue);
@@ -90,7 +83,7 @@ function Agenda({ user }) {
                     </LocalizationProvider>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DateTimePicker
-                            label="Start Date"
+                            label="End"
                             value={endTime}
                             onChange={(newValue) => {
                                 setEndTime(newValue);

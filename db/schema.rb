@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_18_214316) do
+ActiveRecord::Schema.define(version: 2022_04_20_174516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 2022_04_18_214316) do
     t.string "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "start"
-    t.string "end"
     t.bigint "user_id", null: false
+    t.datetime "start"
+    t.datetime "end_time"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 2022_04_18_214316) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.text "body"
+    t.bigint "user_id", null: false
+    t.boolean "completed"
+    t.datetime "due_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,4 +55,5 @@ ActiveRecord::Schema.define(version: 2022_04_18_214316) do
 
   add_foreign_key "events", "users"
   add_foreign_key "messages", "users"
+  add_foreign_key "tasks", "users"
 end

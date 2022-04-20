@@ -30,7 +30,7 @@ function Content() {
                     {user ? (
                         <>
                             <Route path="/" element={<LandingPage user={user}/>} />
-                            <Route path="agenda" element={<Agenda  user={user}/>} />
+                            <Route path="agenda" element={<Agenda />} />
                             <Route path="messages" element={<MessageList conversation={conversation} setConversation={setConversation} user={user}/>} />
                             <Route path="catchup" element={<CatchUp />} />
                             <Route path="tasks" element={<Tasks />} />

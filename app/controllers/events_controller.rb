@@ -1,10 +1,12 @@
 class EventsController < ApplicationController
     def index
-        render json: Event.all 
+        events = Event.all.where(user_id: session[:user_id])
+        
+        render json: events.all.where(start: Date.today.all_day).or(events.all.where("start < ?", Date.today).where("end_time >= ?", Date.today)).order(:start) 
     end
 
     def create
-        message = Event.create(body: params[:body], start: params[:start], end: params[:end], user_id: session[:user_id])
-        render json: message, status: :created
+        event = Event.create(body: params[:body], start: params[:start], end_time: params[:end_time], user_id: session[:user_id])
+        render json: event, status: :created
     end
 end

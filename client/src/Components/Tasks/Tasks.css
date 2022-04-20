@@ -1,0 +1,43 @@
+.fuck-this-and-your-mother{
+	padding-top: 10px;
+}
+#overdue {
+	background-color: rgb(226, 43, 43);
+}
+
+.task-container-true{
+	box-shadow: 0 15px 30px 1px grey;
+	background: rgba(255, 255, 255, 0.90);
+	text-align: left;
+	padding: 3px;
+	border-radius: 5px;
+	margin-top: 0em;
+    margin-right: auto ;
+    margin-bottom: 1em;
+    margin-left: auto;
+	max-height: 75px;
+	max-width: 500px;
+    color: black;
+	text-decoration: line-through;
+	
+}
+
+.task-container-false{
+	box-shadow: 0 15px 30px 1px grey;
+	background: rgba(255, 255, 255, 0.90);
+	text-align: left;
+	padding: 3px;
+	border-radius: 5px;
+	margin-top: 0em;
+    margin-right: auto ;
+    margin-bottom: 1em;
+    margin-left: auto;
+	max-height: 75px;
+	max-width: 500px;
+    color: black;
+	
+}
+
+.tasks-container {
+	margin-top: 10px;
+}
