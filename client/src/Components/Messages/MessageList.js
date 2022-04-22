@@ -22,7 +22,11 @@ function MessageList({ conversation, setConversation, user }) {
     })
 
     return (
-        <div className="card-container">{messageUserMap}</div>
+        <>
+            <ul class="people">
+                {messageUserMap}
+            </ul>
+        </>
     )
 
 }

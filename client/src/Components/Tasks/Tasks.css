@@ -2,7 +2,7 @@
 	padding-top: 10px;
 }
 #overdue {
-	background-color: rgb(226, 43, 43);
+	color: rgb(255, 0, 0);
 }
 
 .task-container-true{
@@ -15,7 +15,7 @@
     margin-right: auto ;
     margin-bottom: 1em;
     margin-left: auto;
-	max-height: 75px;
+	max-height: 100px;
 	max-width: 500px;
     color: black;
 	text-decoration: line-through;
@@ -32,7 +32,7 @@
     margin-right: auto ;
     margin-bottom: 1em;
     margin-left: auto;
-	max-height: 75px;
+	max-height: 100px;
 	max-width: 500px;
     color: black;
 	
@@ -41,3 +41,58 @@
 .tasks-container {
 	margin-top: 10px;
 }
+
+.button-submit{
+	width: 100%;
+}
+.new-task-form{
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.event{
+	width: 73%;
+	height: 56px;
+}
+
+.event_item{
+	width: 73%;
+	height: 56px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 50px;
+}
+
+.ei_Title_task_true{
+	font-size: 20px;
+	color:#363b41;
+	text-decoration: line-through;
+  }
+
+.ei_Title_task_false{
+	font-size: 20px;
+	color:#363b41;
+	
+  }
+  
+  .ei_Copy_task{
+	font-size:12px;
+
+  }
+
+  .center{
+	width:50%;
+	box-shadow: 0px 0px 35px -16px rgba(0,0,0,0.75);
+	font-family: 'Roboto', sans-serif;
+	padding: 20px 30px;
+	color:#363b41;
+	display: inline-block;
+	margin-top: 20px;
+	background-color: #fff;
+  }
+
+  h1{
+	  color: black;
+  }
+
+  

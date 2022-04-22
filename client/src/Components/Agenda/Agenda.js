@@ -5,6 +5,11 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { TextField } from '@mui/material'
 import "./Agenda.css"
+import Button from 'react-bootstrap/Button';
+import Popover from 'react-bootstrap/Popover'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import moment from "moment";
+
 
 function Agenda() {
     const [events, setEvents] = useState([])
@@ -14,6 +19,9 @@ function Agenda() {
     const [refresh, setRefresh] = useState(true)
     const current = new Date();
     const today = `${current.getFullYear()}-${current.getMonth()}-${current.getDate()}`
+    function convert(input) {
+        return moment(input, 'CCYY-MM-DDThh:mm:ss[.sss]TZD').format('MMMM Do, YYYY');
+    }
 
 
     useEffect(() => {
@@ -25,8 +33,7 @@ function Agenda() {
 
 
     const eventsMap = events.map((event, index) => {
-        console.log(event)
-            return <EventCard key={index} event={event} today={today} />
+        return <EventCard key={index} event={event} today={today} />
     })
 
     function handleSubmit(e) {
@@ -57,48 +64,81 @@ function Agenda() {
 
 
 
-    }
 
+
+    }
+    const popover = (
+        <Popover id="popover-basic">
+            <Popover.Header as="h3">New Event</Popover.Header>
+            <Popover.Body>
+                <div className="event-body">
+                    <form className="new-event-form" onSubmit={handleSubmit}>
+                        <input
+                            type="text"
+                            className="button-submit"
+                            placeholder="New Event"
+                            value={event}
+                            onChange={(e) => setEvent(e.target.value)}
+                        />
+                        <div className="wrapp-div">
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DateTimePicker
+                                label="Start"
+                                value={startTime}
+                                onChange={(newValue) => {
+                                    setStartTime(newValue);
+                                }}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
+                        </div>
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DateTimePicker
+                                label="End"
+                                value={endTime}
+                                onChange={(newValue) => {
+                                    setEndTime(newValue);
+                                }}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
+                        <Button variant="outline-dark" type="submit" className="button-submit">Create</Button>
+                    </form>
+                </div>
+            </Popover.Body>
+        </Popover>
+    );
 
     return (
         <>
-            <div>
-                <form className="new-event-form" onSubmit={handleSubmit}>
-                    <input
-                        type="text"
-                        id="event"
-                        placeholder="New Event"
-                        value={event}
-                        onChange={(e) => setEvent(e.target.value)}
-                    />
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <DateTimePicker
-                            label="Start"
-                            value={startTime}
-                            onChange={(newValue) => {
-                                setStartTime(newValue);
-                            }}
-                            renderInput={(params) => <TextField {...params} />}
-                        />
-                    </LocalizationProvider>
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <DateTimePicker
-                            label="End"
-                            value={endTime}
-                            onChange={(newValue) => {
-                                setEndTime(newValue);
-                            }}
-                            renderInput={(params) => <TextField {...params} />}
-                        />
-                    </LocalizationProvider>
-                    <button type="submit">Create</button>
-                </form>
+
+
+
+            <div class="calendar light">
+                {/* <div class="calendar_header">
+                </div> */}
+                <div class="calendar_plan">
+                    <div class="cl_plan">
+                        <div class="cl_title">Today</div>
+                        <div class="cl_copy">{convert(current)}</div>
+                        <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+                            <div class="cl_add">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                        </OverlayTrigger>
+
+                    </div>
+                </div>
+                <div class="calendar_events">
+                    <p class="ce_title">Upcoming Events</p>
+                    {eventsMap}
+                </div>
+
 
 
             </div>
-            <div className="events-container">
-                {eventsMap}
-            </div>
+
+
         </>
     )
 }

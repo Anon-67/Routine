@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import NewsPage from "../NewsPage/NewsPage";
+import "./NewUser.css"
 
 function NewUser({ setUser, user }) {
     const [username, setUsername] = useState("");
@@ -43,45 +44,38 @@ function NewUser({ setUser, user }) {
             {user ? (
                 <NewsPage />
             ) : (
-                <form onSubmit={handleSubmit}>
-                    <h1>Login</h1>
-                    <input
-                        type="text"
-                        id="firstname"
-                        placeholder="First Name"
-                        value={firstname}
-                        onChange={(e) => setFirstname(e.target.value)}
-                    />
-                    <input
-                        type="text"
-                        id="lastname"
-                        placeholder="Last Name"
-                        value={lastname}
-                        onChange={(e) => setLastname(e.target.value)}
-                    />
-                    <input
-                        type="text"
-                        id="username"
-                        placeholder="Username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="New Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <input
-                        type="password"
-                        id="password_confirmation"
-                        placeholder="Re-enter Password"
-                        value={passwordConfirm}
-                        onChange={(e) => setPasswordConfirm(e.target.value)}
-                    />
-                    <button type="submit">Create User</button>
-                </form>)}
+                <div class="card">
+                    <div class="card-image">
+                        <h2 class="card-heading">
+                            Get started
+                            <small>Let's create your account!</small>
+                        </h2>
+                    </div>
+                    <form class="card-form" onSubmit={handleSubmit}>
+                        <div class="input">
+                            <input placeholder="First Name" type="text" class="input-field" value={firstname} onChange={(e) => setFirstname(e.target.value)} required />
+                        </div>
+                        <div class="input">
+                            <input placeholder="Last Name" type="text" class="input-field" value={lastname} onChange={(e) => setLastname(e.target.value)} required />
+                        </div>
+                        <div class="input">
+                            <input placeholder="Username" type="text" class="input-field" value={username} onChange={(e) => setUsername(e.target.value)} required />
+                        </div>
+                        <div class="input">
+                            <input placeholder="Password" type="password" class="input-field" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                        </div>
+                        <div class="input">
+                            <input placeholder="Confirm Password" type="password" class="input-field" value={passwordConfirm} onChange={(e) => setPasswordConfirm(e.target.value)} required />
+                        </div>
+                        <div class="action">
+                            <button class="action-button" type="submit">Get started</button>
+                        </div>
+                    </form>
+                    <div class="card-info">
+                        <p></p>
+                    </div>
+                </div>
+            )}
         </>
     )
 }

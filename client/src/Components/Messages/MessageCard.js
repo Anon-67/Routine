@@ -6,16 +6,20 @@ function MessageCard({ message, user }) {
 
     function className() {
         if (message.user.id === user.id) {
-            return "sent"
+            return "outgoing-bubble"
         } else {
-            return "recieved"
+            return "incoming-bubble"
         }
     }
+    
+
     return (
+        <>
         <div className={className()}>
             <div>{message.user.username}</div>
             <div className="tester">{message.body}</div>
         </div>
+        </>
     )
 }
 

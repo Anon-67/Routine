@@ -4,6 +4,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { TextField } from '@mui/material'
 import TaskCard from "./TaskCard";
+import Button from 'react-bootstrap/Button';
 
 
 
@@ -56,11 +57,11 @@ function Tasks() {
 
     return (
         <div className="fuck-this-and-your-mother">
-            <form className="new-event-form" onSubmit={handleSubmit}>
+            <form className="new-task-form" onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    id="event"
-                    placeholder="New Event"
+                    className="event"
+                    placeholder="New Task"
                     value={task}
                     onChange={(e) => setTask(e.target.value)}
                 />
@@ -74,11 +75,15 @@ function Tasks() {
                         renderInput={(params) => <TextField {...params} />}
                     />
                 </LocalizationProvider>
-                <button type="submit">Create</button>
+                <Button  variant="outline-dark" type="submit" className="button-submit">Create</Button>
             </form>
 
-            <div className="tasks-container">
-                {tasksMap}
+
+            <div class="center">
+                <div class="calendar_events">
+                    <h1>Today's Tasks</h1>
+                    {tasksMap}
+                </div>
             </div>
         </div>
     )

@@ -8,6 +8,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: azure;
 }
+html body {
+  background-color: #E6E6E6;
+
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

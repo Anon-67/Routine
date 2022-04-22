@@ -1,19 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom"
+import "./Messages.css"
 
 
-function MessageUserCard({ messageUser, setConversation}) {
+function MessageUserCard({ messageUser, setConversation }) {
 
     function HandleClick() {
-        setConversation(messageUser.id)
+        console.log(messageUser)
+        setConversation(messageUser)
     }
 
-    
+
 
     return (
-        <li className="user-card">
-            <Link to={`/messages/${messageUser.id}`} onClick={HandleClick}>{messageUser.username}</Link>
-        </li>
+        <>
+
+            <li class="person focus">
+                <Link to={`/messages/${messageUser.id}`} onClick={HandleClick} className="title">{messageUser.username}</Link>
+            </li>
+        </>
     )
 }
 

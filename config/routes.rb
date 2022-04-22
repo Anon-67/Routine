@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :invitations, only: [:create]
   resources :tasks, only: [:create, :index, :update]
   resources :users, only: :index  
   resources :messages, only: [:create, :show]
