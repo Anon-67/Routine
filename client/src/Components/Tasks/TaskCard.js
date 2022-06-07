@@ -10,6 +10,8 @@ function TaskCard({ task, refresh, setRefresh, rightNow }) {
         return moment(input, 'CCYY-MM-DDThh:mm:ss[.sss]TZD').format('MMMM D h:mm A');
     }
 
+    console.log(task)
+
     function id() {
         if (moment(rightNow).format('MMMM D h:mm A') > convert(task.due_date) && task.completed === false) {
             return "overdue"

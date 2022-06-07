@@ -52,7 +52,7 @@ function Messages({ user, conversation }) {
     }
 
     const messageMap = messages.map((message, index) => <MessageCard key={index} message={message} user={user} />)
-    console.log(conversation.username.slice(0,1).toUpperCase())
+
 
 
     return (
