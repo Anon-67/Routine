@@ -51,6 +51,8 @@ function Messages({ user, conversation }) {
 
     }
 
+    
+
     const messageMap = messages.map((message, index) => <MessageCard key={index} message={message} user={user} />)
 
 
