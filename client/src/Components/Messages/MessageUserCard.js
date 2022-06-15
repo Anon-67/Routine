@@ -6,7 +6,6 @@ import "./Messages.css"
 function MessageUserCard({ messageUser, setConversation }) {
 
     function HandleClick() {
-        console.log(messageUser)
         setConversation(messageUser)
     }
 

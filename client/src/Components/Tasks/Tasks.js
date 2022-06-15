@@ -56,7 +56,7 @@ function Tasks() {
 
 
     return (
-        <div className="fuck-this-and-your-mother">
+        <div >
             <form className="new-task-form" onSubmit={handleSubmit}>
                 <input
                     type="text"

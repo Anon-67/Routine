@@ -16,14 +16,14 @@ class UsersController < ApplicationController
             session[:user_id]  = user.id
             render json: user, status: :created
         else
-            render json: { error: "fuck off" }, status: 422
+            render json: { error: "Invalid user" }, status: 422
         end
     end
 
     private 
 
     def authorize
-        return render json: { error: "fuck off" }, status: :unauthorized unless session.include? :user_id
+        return render json: { error: "Invalid User" }, status: :unauthorized unless session.include? :user_id
     end
 
     def user_params
