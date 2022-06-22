@@ -1,46 +1,48 @@
-import React, { useState,useEffect } from 'react';
+import React, {useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Agenda from './Agenda/Agenda';
 import Messages from './Messages/Messages';
 import CatchUp from './CatchUp/CatchUp';
 import Tasks from './Tasks/Tasks';
 import NavBar from './NavBar/NavBar';
-import MessageList from './Messages/MessageList';
+import ConversationsList from './Messages/ConversationList';
 import LandingPage from './LandingPage/LandingPage';
 import NewUser from './NewUser/NewUser';
+import { useDispatch, useSelector } from "react-redux"
+import { setUser } from './util/stateSlice';
 
 function Content() {
-    const [user, setUser] = useState(null);
-    const [conversation, setConversation] = useState(null)
+    const user = useSelector(state => state.state.user)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         fetch("/me").then((r) => {
           if (r.ok) {
-            r.json().then((user) => setUser(user));
+            r.json().then((user) => dispatch(setUser(user)));
           }
         });
-      }, []);
+      }, [dispatch]);
     
     return (
         <div>
             <Router>
-                {user ? (<NavBar user={user} setUser={setUser} setConversation={setConversation} />) : null}
+                {user ? (<NavBar />) : null}
                 <Routes>
                     {user ? (
                         <>
-                            <Route path="/" element={<LandingPage user={user}/>} />
+                            <Route path="/" element={<LandingPage />} />
                             <Route path="agenda" element={<Agenda />} />
-                            <Route path="messages" element={<MessageList conversation={conversation} setConversation={setConversation} user={user}/>} />
+                            <Route path="messages" element={<ConversationsList />} />
                             <Route path="catchup" element={<CatchUp />} />
                             <Route path="tasks" element={<Tasks />} />
-                            <Route path="messages/:id" element={<Messages user={user} conversation={conversation} />} />
-                            <Route path="submit" element={<NewUser setUser={setUser} user={user}/>} />
+                            <Route path="messages/:id" element={<Messages />} />
+                            <Route path="submit" element={<NewUser />} />
 
                         </>
                     ) : (
                         <>
-                            <Route path="/" element={<LandingPage setUser={setUser} user={user} />} />
-                            <Route path="submit" element={<NewUser setUser={setUser} user={user}/>} />
+                            <Route path="/" element={<LandingPage />} />
+                            <Route path="submit" element={<NewUser />} />
                         </>
                     )}
                 </Routes>

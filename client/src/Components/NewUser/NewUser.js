@@ -1,13 +1,18 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import NewsPage from "../NewsPage/NewsPage";
+import { setUser } from "../util/stateSlice";
 import "./NewUser.css"
 
-function NewUser({ setUser, user }) {
+function NewUser() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("")
     const [firstname, setFirstname] = useState("")
     const [lastname, setLastname] = useState("")
+    const user = useSelector(state => state.state.user)
+    const dispatch = useDispatch()
+
 
 
 
@@ -31,9 +36,7 @@ function NewUser({ setUser, user }) {
         })
             .then(r => {
                 if (r.ok) {
-                    r.json().then(r => setUser(r))
-                } else {
-                    r.json().then(r => console.log(r))
+                    r.json().then(r => dispatch(setUser(r)))
                 }
             })
     }

@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 import MessageCard from "./MessageCard";
 import "./Messages.css"
 
 
-function Messages({ user, conversation }) {
+function Messages({  conversation }) {
     const [messages, setMessages] = useState([])
     const [message, setMessage] = useState("")
     const [refresh, setRefresh] = useState(true)
     const messagesEndRef = useRef(null);
+    const user = useSelector(state => state.state.user)
 
     const scrollToBottom = () => {
         messagesEndRef.current.scrollIntoView({ 

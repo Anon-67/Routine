@@ -4,11 +4,15 @@ import "./NavBar.css"
 import Navbar from 'react-bootstrap/Navbar'
 import { NavDropdown } from 'react-bootstrap'
 import Avatar from '@mui/material/Avatar'
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../util/stateSlice";
 
 
 
 
-function NavBar({ user, setUser, setConversation }) {
+function NavBar() {
+    const user = useSelector(state => state.state.user)
+    const dispatch = useDispatch()
 
     function handleLogoutClick() {
         fetch("/logout", {
@@ -16,16 +20,9 @@ function NavBar({ user, setUser, setConversation }) {
         })
             .then((r) => {
                 if (r.ok) {
-                    setUser(null);
+                    dispatch(setUser(null));
                 }
             });
-    }
-
-    function HandleClick() {
-
-        useEffect(() => {
-            setConversation(null)
-        }, [])
     }
 
 
@@ -40,8 +37,8 @@ function NavBar({ user, setUser, setConversation }) {
                             <Link className="nav-link" to="/">Home</Link>
                             <Link className="nav-link" to="/agenda">Agenda</Link>
                             <Link className="nav-link" to="/tasks">Today's Tasks</Link>
-                            <Link className="nav-link" to="/messages" onClick={HandleClick()}>Messages</Link>
-                            <Link className="nav-link" to="/catchup">Catch Up</Link>
+                            <Link className="nav-link" to="/messages">Messages</Link>
+                            {/* <Link className="nav-link" to="/catchup">Catch Up</Link> */}
 
 
                         </nav>

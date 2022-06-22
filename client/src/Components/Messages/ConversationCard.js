@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import "./Messages.css"
 
 
-function MessageUserCard({ messageUser, setConversation }) {
+function ConversationCard({ messageUser, setConversation }) {
 
     function HandleClick() {
         setConversation(messageUser)
@@ -21,4 +21,4 @@ function MessageUserCard({ messageUser, setConversation }) {
     )
 }
 
-export default MessageUserCard
+export default ConversationCard

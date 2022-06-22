@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_21_150124) do
+ActiveRecord::Schema.define(version: 2022_06_22_193632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "conversations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "body"
@@ -21,6 +27,15 @@ ActiveRecord::Schema.define(version: 2022_04_21_150124) do
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "start"
     t.datetime "end_time"
+  end
+
+  create_table "handshakes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "conversation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["conversation_id"], name: "index_handshakes_on_conversation_id"
+    t.index ["user_id"], name: "index_handshakes_on_user_id"
   end
 
   create_table "invitations", force: :cascade do |t|
@@ -60,6 +75,8 @@ ActiveRecord::Schema.define(version: 2022_04_21_150124) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "handshakes", "conversations"
+  add_foreign_key "handshakes", "users"
   add_foreign_key "invitations", "events"
   add_foreign_key "invitations", "users"
   add_foreign_key "messages", "users"

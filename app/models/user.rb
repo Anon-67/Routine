@@ -4,4 +4,6 @@ class User < ApplicationRecord
 
     has_many :invitations
     has_many :events, through: :invitations
+    has_many :handshakes
+    has_many :conversations, through: :handshakes
 end
